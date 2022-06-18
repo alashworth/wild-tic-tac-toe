@@ -136,7 +136,7 @@ def choose_move(board: List[str], value_function: Dict) -> Tuple[int, str]:
 	best_action = (None, None)
 	best_utility = np.NINF
 	for position, marker in actions:
-		b = board.copy()
+		b = copy.deepcopy(board)
 		b[position] = marker
 		util = value_function[tuple(b)]
 		if util > best_utility:
