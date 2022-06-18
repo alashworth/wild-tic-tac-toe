@@ -80,8 +80,6 @@ def train(game: WildTictactoeMechanics) -> Dict:
 	value_function = defaultdict(float)
 	delta = 1000
 	threshold = 0.001
-	n_iters = 0
-	states_explored = 0
 	states = it.product([Cell.X, Cell.O, Cell.EMPTY], repeat=9)
 	while delta > threshold:
 		delta = 0
@@ -108,8 +106,6 @@ def train(game: WildTictactoeMechanics) -> Dict:
 				max_action = max(max_action, update)
 			value_function[tuple(s)] = max_action
 			delta = max(delta, abs(v - max_action))
-		n_iters += 1
-		print(f"num iter: {n_iters}")
 	return value_function
 
 
